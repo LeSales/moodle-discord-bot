@@ -5,9 +5,7 @@ const config = require("./config.json");
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
 async function checkStatus() {
-  let status = await isReachable(
-    "https://www.dcc.ufrrj.br/moodle/login/index.php"
-  );
+  let status = await isReachable(config.url);
 
   if (status === true) {
     client.user.setActivity("Moodle ON");
