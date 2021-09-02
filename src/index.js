@@ -1,9 +1,8 @@
+require('dotenv').config();
+
 const Discord = require("discord.js");
 const isReachable = require("is-reachable");
-const config = require("../config.json");
 const url = require("./url");
-
-const serviceCheckTime = 30000;
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
@@ -23,6 +22,6 @@ async function checkStatus() {
   }
 }
 
-setInterval(checkStatus, serviceCheckTime);
+setInterval(checkStatus, process.env.REFRESH_TIME);
 
-client.login(`${config.token}`);
+client.login(process.env.BOT_TOKEN);
